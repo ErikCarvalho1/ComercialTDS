@@ -1,24 +1,30 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Bcpg;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ComercialTDSClass
 {
-    class Banco
+   public static class Banco
     {
-        public static MySqlCommand Abrir()
+       public static string StrConn { get; set; } 
+        public static MySqlCommand Abrir(string strconn="")
         {
-
-
             MySqlCommand cmd = new();
-            string strConn = @"server=Localhost;database=comercialdb;user=root;password=";
-            MySqlConnection cn = new(strConn);
+            StrConn = strconn;
+
+            if (StrConn == string.Empty)
+            StrConn =  $@"server=Localhost;database=comercialtdsdb01;user=root;password=";
+            MySqlConnection cn = new(StrConn);
+            //cn.ConnectionString = Strconn;
             try
             {
-                cn.Open();
+                cn.Open();// ao passar por aqui terá uma connexão aberta
                 cmd.Connection = cn;
             }
             catch (Exception ex)
@@ -26,6 +32,7 @@ namespace ComercialTDSClass
                 Console.WriteLine(ex.Message);
             }
             return cmd;
+         
         }
     }
 }
