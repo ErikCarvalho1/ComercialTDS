@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace ComercialTDSClass
 {
     class Cliente
     {
-       
+
 
         public int Id { get; set; }
 
@@ -44,19 +45,19 @@ namespace ComercialTDSClass
 
 
         //inserir 
-        public Cliente( string nome, string cpf, string telefone, string email, DateTime dataNasc, DateTime dataCad, bool ativo)
+        public Cliente(string nome, string cpf, string telefone, string email, DateTime dataNasc, DateTime dataCad, bool ativo)
         {
-            
+
             Nome = nome;
             Cpf = cpf;
             Telefone = telefone;
             Email = email;
             Ativo = ativo;
         }
-        //alterar
-        public Cliente( string nome,  string telefone, DateTime dataNasc, DateTime dataCad, bool ativo)
+    
+        public Cliente(string nome, string telefone, DateTime dataNasc, DateTime dataCad, bool ativo)
         {
-            
+
             Nome = nome;
             Telefone = telefone;
             DataNasc = dataNasc;
@@ -73,7 +74,7 @@ namespace ComercialTDSClass
             cmd.Parameters.AddWithValue("spcpf", Cpf);
             cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
-      
+
             Id = Convert.ToInt32(cmd.ExecuteScalarAsync());
             cmd.Connection.Close();
         }
@@ -86,14 +87,39 @@ namespace ComercialTDSClass
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnopme", Nome);
             cmd.Parameters.AddWithValue("spcpf", Cpf);
-            cmd.Parameters.AddWithValue("sptelefone",Telefone);
+            cmd.Parameters.AddWithValue("sptelefone", Telefone);
             cmd.Parameters.AddWithValue("spemail", Email);
 
             //usuando if ternario, sem fechar conexao 
             return cmd.ExecuteNonQuery() > 0 ? true : false;
 
-               
-        }
 
+        }
+        public static Cliente ObterPorId(int id)
+        {
+            Cliente cliente = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandText = $"select * from clientes where id = '{id}'";
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                cliente = new(
+                                dr.GetInt32(0),
+                                dr.GetString(1),
+                                dr.GetString(2),
+                                dr.GetString(3),
+                                dr.GetString(4),
+                                dr.GetDateTime(5),
+                                dr.GetDateTime(6),
+                                dr.GetBoolean(7)
+                );
+            }
+            dr.Close();
+            return cliente;
+        }
+        public List<Endereco> ObterEnderecos()
+        {
+            return Endereco.ObterListaPorClienteId(this.Id);
+        }
     }
 }
