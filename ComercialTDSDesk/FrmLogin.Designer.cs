@@ -79,7 +79,7 @@
             chkExibeSenha.AutoSize = true;
             chkExibeSenha.Location = new Point(426, 168);
             chkExibeSenha.Name = "chkExibeSenha";
-            chkExibeSenha.Size = new Size(82, 19);
+            chkExibeSenha.Size = new Size(83, 19);
             chkExibeSenha.TabIndex = 4;
             chkExibeSenha.Text = "checkBox1";
             chkExibeSenha.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(243, 58);
             label1.Name = "label1";
-            label1.Size = new Size(120, 15);
+            label1.Size = new Size(119, 15);
             label1.TabIndex = 5;
             label1.Text = "ACESSO AO SISTEMA";
             // 

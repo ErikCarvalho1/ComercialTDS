@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComercialTDSClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,7 @@ namespace ComercialTDSDesk
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            Program.UsuarioLogado = Usuario.EfetuarLogin(txtEmail.txtSenha.Text);
+            Program.UsuarioLogado = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text);
             Close();
         }
 

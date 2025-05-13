@@ -151,7 +151,9 @@ namespace ComercialTDSClass
         {
             Usuario usuario = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from usuarios whrere email = '{email}' ande senha = md5('{senha}')";
+            cmd.CommandText = "select * from usuarios where email = @Email and senha = MD5(@Senha)";
+            cmd.Parameters.AddWithValue("@Email", email);
+            cmd.Parameters.AddWithValue("@Senha", senha);
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
