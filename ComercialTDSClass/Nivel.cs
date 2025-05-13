@@ -12,7 +12,7 @@ using Org.BouncyCastle.Pqc.Crypto.Bike;
 
 namespace ComercialTDSClass
 {
-    class Nivel
+   public class Nivel
     {
      
 

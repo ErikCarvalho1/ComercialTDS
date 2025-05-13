@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
+
 namespace ComercialTDSClass
 {
-    class Usuario
+   public class Usuario
     {
         public int Id { get; set; }
         public  string? Nome { get; set; }
