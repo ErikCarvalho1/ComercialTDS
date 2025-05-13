@@ -12,7 +12,7 @@ using Org.BouncyCastle.Pqc.Crypto.Bike;
 
 namespace ComercialTDSClass
 {
-    class Nivel
+   public class Nivel
     {
      
 
@@ -49,7 +49,7 @@ namespace ComercialTDSClass
             Nivel nivel = new();
             //codigo nivel método 
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from niveis whwre id = {id}";
+            cmd.CommandText = $"select * from niveis where id = {id}";
             var dr = cmd.ExecuteReader();
             if(dr.Read())
             {

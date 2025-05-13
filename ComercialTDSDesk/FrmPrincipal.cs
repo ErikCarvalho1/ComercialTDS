@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ComercialTDSDesk
 {
     public partial class FrmPrincipal : Form
@@ -18,6 +19,45 @@ namespace ComercialTDSDesk
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            FrmLogin frmlogin = new();
+            this.Hide();
+            frmlogin.ShowDialog();
+            if (Program.UsuarioLogado.Id > 0)
+            {
+
+                tsslUsuarioLogado.Text = Program.UsuarioLogado.Nome + " - " + Program.UsuarioLogado.Nivel.Nome;
+
+            }
+
+            Show();
+        }
+
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trocarDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmlogin = new();
+            frmlogin.bntCancelar.Text = "&Voltar";
+            frmlogin.ShowDialog();
+            tsslUsuarioLogado.Text = Program.UsuarioLogado.Nome + "-" + Program.UsuarioLogado.Nivel.Nome;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
