@@ -61,5 +61,27 @@ namespace ComercialTDSDesk
         {
 
         }
+
+        private void cadatroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmNivel frmnivel = new();
+            frmnivel.MdiParent = this();
+            frmnivel.Show();
+        }
     }
 }

@@ -35,6 +35,7 @@
             chkExibeSenha = new CheckBox();
             label1 = new Label();
             label2 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // txtEmail
@@ -79,7 +80,7 @@
             chkExibeSenha.AutoSize = true;
             chkExibeSenha.Location = new Point(426, 168);
             chkExibeSenha.Name = "chkExibeSenha";
-            chkExibeSenha.Size = new Size(83, 19);
+            chkExibeSenha.Size = new Size(82, 19);
             chkExibeSenha.TabIndex = 4;
             chkExibeSenha.Text = "checkBox1";
             chkExibeSenha.UseVisualStyleBackColor = true;
@@ -89,7 +90,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(243, 58);
             label1.Name = "label1";
-            label1.Size = new Size(119, 15);
+            label1.Size = new Size(120, 15);
             label1.TabIndex = 5;
             label1.Text = "ACESSO AO SISTEMA";
             // 
@@ -103,6 +104,16 @@
             label2.TabIndex = 6;
             label2.Text = "Comercial TDS Sytem ";
             // 
+            // button1
+            // 
+            button1.Location = new Point(243, 254);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 7;
+            button1.Text = "info";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FrmLogin
             // 
             AcceptButton = btnEntrar;
@@ -110,6 +121,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = bntCancelar;
             ClientSize = new Size(676, 347);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(chkExibeSenha);
@@ -136,5 +148,6 @@
         private CheckBox chkExibeSenha;
         private Label label1;
         private Label label2;
+        private Button button1;
     }
 }
