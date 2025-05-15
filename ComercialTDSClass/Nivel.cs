@@ -33,7 +33,7 @@ namespace ComercialTDSClass
             this.Sigla = sigla;
         }
         // inserir, atualizar, lista , obterPorId
-        public void Iserir()
+        public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -69,7 +69,7 @@ namespace ComercialTDSClass
         {
             List<Nivel> niveis = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "seletc * from niveis order by nome";
+            cmd.CommandText = "select * from niveis order by nome";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -77,7 +77,7 @@ namespace ComercialTDSClass
             }
             return niveis;
         }
-        public bool atualizar()
+        public bool Atualizar()
         {  
             //como o metodo nao é estatico devemos considerar que as propriedades
             //ja possuem valores atrtibudos

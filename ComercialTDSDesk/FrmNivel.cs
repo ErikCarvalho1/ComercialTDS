@@ -20,30 +20,46 @@ namespace ComercialTDSDesk
 
         private void bntGravar_Click(object sender, EventArgs e)
         {
-            if(txtId.Text == string.Empty)
+            if (txtId.Text == string.Empty)
             {
-               if (txtNome.Text!=string.Empty && txtSigla.Text!=string.Empty)
+                if (txtNome.Text != string.Empty && txtSigla.Text != string.Empty)
                 {
                     Nivel nivel = new(txtNome.Text, txtSigla.Text);
-                    nivel.Iserir();
+                    nivel.Inserir();
                     if (nivel.Id > 0)
                     {
-                        MessageB
+                        MessageBox.Show($"Nível cadastrado com sucesso");
+                        //btnGravar.Enabled = false;
                     }
-
+                }
+            }
+            else
+            {
+                Nivel nivel = new(int.Parse(txtId.Text), txtNome.Text, txtSigla.Text);
+                if (nivel.Atualizar())
+                {
+                    MessageBox.Show("Nível atualizado com sucesso!");
+                    //btnGravar.Enabled = false;
 
                 }
-                LimparControles();
             }
-            Nivel nivel = new(txtNome.Text, txtSigla.Text);
-
-            if (nivel.Id > 0)
-
+           
+        }
+        private void CarregaGrid()
+        {
+            var Lista = Nivel.ObterLista();
+            int linha = 0;
+            dgvNiveis.Rows.Clear();
+            foreach (var item in Lista)
             {
-                nivel.Iserir();
-                MessageBox.Show($"Nível cadastrado com sucesso");
+                dgvNiveis.Rows.Add();
+                dgvNiveis.Rows[linha].Cells[0].Value = item.Id;
+                dgvNiveis.Rows[linha].Cells[1].Value = item.Nome;
+                dgvNiveis.Rows[linha].Cells[2].Value = item.Sigla;
+                linha++;
             }
         }
+
         public void LimparControles()
         {
             txtId.Clear();
@@ -53,8 +69,8 @@ namespace ComercialTDSDesk
         }
         private void FrmNivel_Load(object sender, EventArgs e)
         {
-
             CarregaGrid();
+
             //var niveis = Nivel.ObterLista();
             //int linha = 0;
             //dgvNiveis.Rows.Clear();
@@ -90,7 +106,7 @@ namespace ComercialTDSDesk
             txtSigla.ReadOnly = true;
             bntEditar.Enabled = true;
 
-            MessageBox.Show($"{nivel.Id} {nivel.Nome} {nivel.Sigla}");
+           // MessageBox.Show($"{nivel.Id} {nivel.Nome} {nivel.Sigla}");
 
         }
 

@@ -80,7 +80,7 @@ namespace ComercialTDSDesk
         private void listarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmNivel frmnivel = new();
-            frmnivel.MdiParent = this();
+            frmnivel.MdiParent = this; // Corrigido: removido os parênteses
             frmnivel.Show();
         }
     }
