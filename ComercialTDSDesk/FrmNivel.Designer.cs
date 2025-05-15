@@ -77,12 +77,14 @@
             // 
             // bntEditar
             // 
+            bntEditar.Enabled = false;
             bntEditar.Location = new Point(223, 207);
             bntEditar.Name = "bntEditar";
             bntEditar.Size = new Size(75, 23);
             bntEditar.TabIndex = 4;
             bntEditar.Text = "&Editar";
             bntEditar.UseVisualStyleBackColor = true;
+            bntEditar.Click += bntEditar_Click;
             // 
             // bntCancelar
             // 
@@ -106,6 +108,8 @@
             dgvNiveis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvNiveis.Size = new Size(283, 180);
             dgvNiveis.TabIndex = 6;
+            dgvNiveis.CellContentClick += dgvNiveis_CellContentClick_1;
+            dgvNiveis.CellContentDoubleClick += dgvNiveis_CellContentClick_1;
             // 
             // clnId
             // 
