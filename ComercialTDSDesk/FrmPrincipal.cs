@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.X509;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,8 +32,23 @@ namespace ComercialTDSDesk
             }
 
             Show();
-        }
 
+            // chamda do panel
+
+        }
+        private void AssociaPanel(Form form)
+        {
+
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.MaximizeBox = true;
+            form.AutoSize = true;
+            form.Size = pnlCentral.Size;
+            pnlCentral.Controls.Clear();
+            pnlCentral.Controls.Add(form);
+            form.Show();
+            pnlCentral.Visible = true;
+        }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -79,9 +95,16 @@ namespace ComercialTDSDesk
 
         private void listarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmNivel frmnivel = new();
-            frmnivel.MdiParent = this; // Corrigido: removido os parênteses
-            frmnivel.Show();
+            // FrmNivel frmnivel = new();
+            AssociaPanel(new FrmNivel());
+            //FrmNivel frmnivel = new();
+            //frmnivel.MdiParent = this; // Corrigido: removido os parênteses
+            //frmnivel.Show();
+        }
+
+        private void incluirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AssociaPanel(new FrmUsuario());
         }
     }
 }
