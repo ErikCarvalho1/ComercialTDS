@@ -191,7 +191,7 @@
             incluirToolStripMenuItem1.Name = "incluirToolStripMenuItem1";
             incluirToolStripMenuItem1.Size = new Size(180, 22);
             incluirToolStripMenuItem1.Text = "&Incluir";
-            incluirToolStripMenuItem1.Click += incluirToolStripMenuItem1_Click;
+          
             // 
             // listarToolStripMenuItem1
             // 
