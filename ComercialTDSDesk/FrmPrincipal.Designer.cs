@@ -69,6 +69,7 @@
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             perfilToolStripMenuItem = new ToolStripMenuItem();
             trocarDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
+            pnlCentral = new Panel();
             menuStrip1.SuspendLayout();
             tsslUsuarioLogado.SuspendLayout();
             SuspendLayout();
@@ -139,31 +140,31 @@
             // incluirToolStripMenuItem
             // 
             incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            incluirToolStripMenuItem.Size = new Size(180, 22);
+            incluirToolStripMenuItem.Size = new Size(134, 22);
             incluirToolStripMenuItem.Text = "&Incluir";
             // 
             // listarToolStripMenuItem
             // 
             listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            listarToolStripMenuItem.Size = new Size(180, 22);
+            listarToolStripMenuItem.Size = new Size(134, 22);
             listarToolStripMenuItem.Text = "&Listar";
             // 
             // fornecedorToolStripMenuItem
             // 
             fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            fornecedorToolStripMenuItem.Size = new Size(180, 22);
+            fornecedorToolStripMenuItem.Size = new Size(134, 22);
             fornecedorToolStripMenuItem.Text = "&Fornecedor";
             // 
             // categoriaToolStripMenuItem
             // 
             categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            categoriaToolStripMenuItem.Size = new Size(180, 22);
+            categoriaToolStripMenuItem.Size = new Size(134, 22);
             categoriaToolStripMenuItem.Text = "&Categoria";
             // 
             // estoqueToolStripMenuItem
             // 
             estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            estoqueToolStripMenuItem.Size = new Size(180, 22);
+            estoqueToolStripMenuItem.Size = new Size(134, 22);
             estoqueToolStripMenuItem.Text = "&Estoque";
             // 
             // categoriasToolStripMenuItem
@@ -190,6 +191,7 @@
             incluirToolStripMenuItem1.Name = "incluirToolStripMenuItem1";
             incluirToolStripMenuItem1.Size = new Size(180, 22);
             incluirToolStripMenuItem1.Text = "&Incluir";
+            incluirToolStripMenuItem1.Click += incluirToolStripMenuItem1_Click;
             // 
             // listarToolStripMenuItem1
             // 
@@ -215,7 +217,7 @@
             // 
             caixaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { abrirToolStripMenuItem, terminarToolStripMenuItem, consultarToolStripMenuItem1, relatorioToolStripMenuItem });
             caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            caixaToolStripMenuItem.Size = new Size(180, 22);
+            caixaToolStripMenuItem.Size = new Size(120, 22);
             caixaToolStripMenuItem.Text = "&Caixa";
             // 
             // abrirToolStripMenuItem
@@ -245,20 +247,20 @@
             // terminalToolStripMenuItem
             // 
             terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
-            terminalToolStripMenuItem.Size = new Size(180, 22);
+            terminalToolStripMenuItem.Size = new Size(120, 22);
             terminalToolStripMenuItem.Text = "&Terminal";
             // 
             // vendasToolStripMenuItem
             // 
             vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
-            vendasToolStripMenuItem.Size = new Size(180, 22);
+            vendasToolStripMenuItem.Size = new Size(120, 22);
             vendasToolStripMenuItem.Text = "&Vendas ";
             // 
             // vendasToolStripMenuItem1
             // 
             vendasToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consultarToolStripMenuItem2, emitirNotaToolStripMenuItem });
             vendasToolStripMenuItem1.Name = "vendasToolStripMenuItem1";
-            vendasToolStripMenuItem1.Size = new Size(180, 22);
+            vendasToolStripMenuItem1.Size = new Size(120, 22);
             vendasToolStripMenuItem1.Text = "&Vendas ";
             // 
             // consultarToolStripMenuItem2
@@ -322,27 +324,36 @@
             // usuarioToolStripMenuItem
             // 
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            usuarioToolStripMenuItem.Size = new Size(165, 22);
+            usuarioToolStripMenuItem.Size = new Size(166, 22);
             usuarioToolStripMenuItem.Text = "Usuario";
             // 
             // perfilToolStripMenuItem
             // 
             perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            perfilToolStripMenuItem.Size = new Size(165, 22);
+            perfilToolStripMenuItem.Size = new Size(166, 22);
             perfilToolStripMenuItem.Text = "Perfil";
             // 
             // trocarDeUsuarioToolStripMenuItem
             // 
             trocarDeUsuarioToolStripMenuItem.Name = "trocarDeUsuarioToolStripMenuItem";
-            trocarDeUsuarioToolStripMenuItem.Size = new Size(165, 22);
+            trocarDeUsuarioToolStripMenuItem.Size = new Size(166, 22);
             trocarDeUsuarioToolStripMenuItem.Text = "Trocar de Usuario";
             trocarDeUsuarioToolStripMenuItem.Click += trocarDeUsuarioToolStripMenuItem_Click;
+            // 
+            // pnlCentral
+            // 
+            pnlCentral.Location = new Point(59, 49);
+            pnlCentral.Name = "pnlCentral";
+            pnlCentral.Size = new Size(664, 367);
+            pnlCentral.TabIndex = 6;
+            pnlCentral.Visible = false;
             // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pnlCentral);
             Controls.Add(tsslUsuarioLogado);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
@@ -400,5 +411,6 @@
         private ToolStripMenuItem vendasToolStripMenuItem1;
         private ToolStripMenuItem consultarToolStripMenuItem2;
         private ToolStripMenuItem emitirNotaToolStripMenuItem;
+        private Panel pnlCentral;
     }
 }

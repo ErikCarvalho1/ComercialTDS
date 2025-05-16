@@ -45,7 +45,7 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(138, 59);
+            txtId.Location = new Point(51, 54);
             txtId.Name = "txtId";
             txtId.Size = new Size(58, 23);
             txtId.TabIndex = 0;
@@ -53,21 +53,21 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(142, 128);
+            txtNome.Location = new Point(55, 123);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(230, 23);
             txtNome.TabIndex = 1;
             // 
             // txtSigla
             // 
-            txtSigla.Location = new Point(142, 178);
+            txtSigla.Location = new Point(55, 173);
             txtSigla.Name = "txtSigla";
             txtSigla.Size = new Size(105, 23);
             txtSigla.TabIndex = 2;
             // 
             // bntGravar
             // 
-            bntGravar.Location = new Point(144, 207);
+            bntGravar.Location = new Point(57, 202);
             bntGravar.Name = "bntGravar";
             bntGravar.Size = new Size(75, 23);
             bntGravar.TabIndex = 3;
@@ -78,7 +78,7 @@
             // bntEditar
             // 
             bntEditar.Enabled = false;
-            bntEditar.Location = new Point(223, 207);
+            bntEditar.Location = new Point(136, 202);
             bntEditar.Name = "bntEditar";
             bntEditar.Size = new Size(75, 23);
             bntEditar.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // bntCancelar
             // 
-            bntCancelar.Location = new Point(304, 207);
+            bntCancelar.Location = new Point(217, 202);
             bntCancelar.Name = "bntCancelar";
             bntCancelar.Size = new Size(75, 23);
             bntCancelar.TabIndex = 5;
@@ -101,7 +101,7 @@
             dgvNiveis.AllowUserToDeleteRows = false;
             dgvNiveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNiveis.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnSIgla });
-            dgvNiveis.Location = new Point(411, 73);
+            dgvNiveis.Location = new Point(324, 68);
             dgvNiveis.Name = "dgvNiveis";
             dgvNiveis.ReadOnly = true;
             dgvNiveis.RowHeadersVisible = false;
@@ -134,7 +134,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(142, 110);
+            label1.Location = new Point(55, 105);
             label1.Name = "label1";
             label1.Size = new Size(40, 15);
             label1.TabIndex = 7;
@@ -143,7 +143,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(144, 160);
+            label2.Location = new Point(57, 155);
             label2.Name = "label2";
             label2.Size = new Size(32, 15);
             label2.TabIndex = 8;
@@ -153,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(648, 328);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvNiveis);
