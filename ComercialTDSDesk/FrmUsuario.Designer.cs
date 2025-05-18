@@ -56,7 +56,7 @@
             bntGravar.Name = "bntGravar";
             bntGravar.Size = new Size(75, 23);
             bntGravar.TabIndex = 0;
-            bntGravar.Text = "Gravar";
+            bntGravar.Text = "&Gravar";
             bntGravar.UseVisualStyleBackColor = true;
             bntGravar.Click += bntGravar_Click;
             // 
@@ -66,7 +66,7 @@
             bntEditar.Name = "bntEditar";
             bntEditar.Size = new Size(65, 23);
             bntEditar.TabIndex = 1;
-            bntEditar.Text = "Editar";
+            bntEditar.Text = "&Editar";
             bntEditar.UseVisualStyleBackColor = true;
             bntEditar.Click += bntEditar_Click;
             // 
@@ -159,7 +159,7 @@
             bntCancelar.Name = "bntCancelar";
             bntCancelar.Size = new Size(63, 23);
             bntCancelar.TabIndex = 13;
-            bntCancelar.Text = "Cancelar ";
+            bntCancelar.Text = "&Cancelar ";
             bntCancelar.UseVisualStyleBackColor = true;
             // 
             // dgvUsuarios

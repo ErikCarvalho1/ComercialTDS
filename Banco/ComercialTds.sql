@@ -1,4 +1,3 @@
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -48,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`usuarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 1006
+AUTO_INCREMENT = 1001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -77,11 +76,11 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`categorias` (
   `id` INT(4) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(40) NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
   `sigla` CHAR(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 246
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -101,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`clientes` (
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 25
+AUTO_INCREMENT = 10001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -127,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`enderecos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 24
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -145,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`produtos` (
   `classe_desconto` DECIMAL(10,2) NULL DEFAULT NULL,
   `imagem` BLOB NULL DEFAULT NULL,
   `data_cad` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+   `descontinuado` BIT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `idProduto_UNIQUE` (`id` ASC) ,
   UNIQUE INDEX `Produtocol_UNIQUE` (`cod_barras` ASC) ,
@@ -155,7 +155,8 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`produtos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+-- hashcode
+AUTO_INCREMENT = 7400001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -217,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`pedidos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 100127
+AUTO_INCREMENT = 100001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -245,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`itempedido` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -525,6 +526,7 @@ begin
     spestoque_minimo,
     spclasse_desconto,
     null,
+    default, 
     default);
     select last_insert_id();
 end$$
@@ -545,11 +547,13 @@ spvalor_unit decimal(10,2),
 spunidade_venda varchar(12),
 spcategoria_id int,
 spestoque_minimo decimal(10,2),
-spclasse_desconto decimal(10,2))
+spclasse_desconto decimal(10,2),
+spdescontinuado bit(1)
+)
 begin
 	update produtos set cod_barras = spcod_barras, descricao = spdescricao,
     valor_unit = spvalor_unit, unidade_venda = spunidade_venda, categoria_id = spcategoria_id,
-    estoque_minimo = spestoque_minimo, classe_desconto = spclasse_desconto
+    estoque_minimo = spestoque_minimo, classe_desconto = spclasse_desconto, descontinuado = spdescontinuado 
     where id = spid;
 end$$
 
@@ -588,7 +592,10 @@ begin
 end$$
 
 DELIMITER ;
-
+CALL sp_usuario_insert('Erik', 'erik@erik', md5('123') , ' 1');
+    select * from niveisusuarios;
+    INSERT INTO usuarios (nome, email, senha, nivel_id, ativo)
+VALUES ('Erik', 'erik@erik1', MD5('senha123'), 1, b'1');
 -- -----------------------------------------------------
 -- procedure sp_venda_terminal
 -- -----------------------------------------------------
@@ -624,7 +631,7 @@ CREATE
 DEFINER=`root`@`localhost`
 TRIGGER `comercialtdsdb01`.`trigger_gera_estoque`
 AFTER INSERT ON `comercialtdsdb01`.`produtos`
-FOR EACH ROW
+FOR EACH 
 BEGIN
 INSERT INTO estoques values(new.id, 0, current_date());
 END$$
@@ -650,7 +657,8 @@ begin
 		   insert into niveis(nome, sigla) values (spnome, spsigla);
            select * from niveis where id = last_insert_id();
 end $$
-
+CALL comercialtdsdb01.sp_nivel_insert('Administrador', 'ADM');
+select * from niveis;
 -- SP_NIVEL_UPDATE --
 delimiter $$
 		    create procedure comercialtdsdb01.sp_nivel_update(
@@ -670,7 +678,5 @@ DELIMITER ;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-INSERT INTO usuarios (nome, email, senha, nivel_id, ativo)
-VALUES ('João da Silva', 'joao.silva@email.com', MD5('senha123'), 1, b'1');
-SELECT * FROM niveis WHERE id = 1;
-INSERT INTO niveis (id, nome) VALUES (1, 'Administrador');
+
+select * from usuarios;
