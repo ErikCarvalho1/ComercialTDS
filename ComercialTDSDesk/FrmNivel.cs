@@ -22,7 +22,7 @@ namespace ComercialTDSDesk
         {
             if (txtId.Text == string.Empty)
             {
-                if (txtNome.Text != string.Empty && txtSigla.Text != string.Empty)
+                if (txtNome.Text != string.Empty && txtSigla.Text != string.Empty )
                 {
                     Nivel nivel = new(txtNome.Text, txtSigla.Text);
                     nivel.Inserir();
@@ -32,6 +32,8 @@ namespace ComercialTDSDesk
                         //btnGravar.Enabled = false;
                     }
                 }
+                CarregaGrid();
+                LimpaControles();
             }
             else
             {
@@ -60,7 +62,7 @@ namespace ComercialTDSDesk
             }
         }
 
-        public void LimparControles()
+        public void LimpaControles()
         {
             txtId.Clear();
             txtNome.Clear();

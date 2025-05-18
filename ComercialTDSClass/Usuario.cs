@@ -35,14 +35,14 @@ namespace ComercialTDSClass
             Nivel = nivel;
             Ativo = ativo;
         }
-        public Usuario( string? nome, string? email, string? senha, Nivel? nivel, bool ativo)
+        public Usuario( string? nome, string? email, string? senha, Nivel nivel, bool ativo)
         {
            
             Nome = nome;
             Email = email;
             Senha = senha;
-            Nivel = nivel;
             Ativo = ativo;
+            Nivel = nivel;
         }
         public Usuario(string? nome, string? email, string? senha, Nivel? nivel)
         {
@@ -53,6 +53,7 @@ namespace ComercialTDSClass
             Nivel = nivel;
           
         }
+  
         public Usuario(int id, string? senha)
         {
             Id = id;
@@ -73,25 +74,32 @@ namespace ComercialTDSClass
             cmd.CommandText = "sp_usuario_insert";
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spemail", Email);
-            cmd.Parameters.AddWithValue("spemail", Senha);
+            cmd.Parameters.AddWithValue("spsenha", Senha);
             cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
-            Id = Convert.ToInt32(cmd.ExecuteScalarAsync());
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Connection.Close();
         }
 
 
-        public bool Atualizar() 
-        {
+        
 
+     public bool Atualizar()
+        {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_usuario_altera";
+
             cmd.Parameters.AddWithValue("spid", Id);
-            cmd.Parameters.AddWithValue("spnopme", Nome);
-                cmd.Parameters.AddWithValue("spsenha", Senha);
+            cmd.Parameters.AddWithValue("spnome", Nome);
+           cmd.Parameters.AddWithValue("spsenha", Senha); // ← faltando aqui
             cmd.Parameters.AddWithValue("spnivel", Nivel.Id);
+            if (string.IsNullOrEmpty(Senha))
+                throw new ArgumentException("Senha cannot be null or empty.");
+
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
             //usuando if ternario, sem fechar conexao 
-            return cmd.ExecuteNonQuery() > 0 ? true : false;
 
             //usando if/else e fechado a conexao
             //if (cmd.ExecuteNonQuery() > 0)
@@ -101,12 +109,13 @@ namespace ComercialTDSClass
             //}
             //else
            //return false;     
-        }
+        
         public static Usuario ObterporId(int id) 
         {
             Usuario usuario = new();
+
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from usuarios whrere id = '{id}'";
+            cmd.CommandText = $"select * from usuarios where id = '{id}'";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
