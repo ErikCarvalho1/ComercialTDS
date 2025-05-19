@@ -142,6 +142,7 @@
             incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
             incluirToolStripMenuItem.Size = new Size(134, 22);
             incluirToolStripMenuItem.Text = "&Incluir";
+            incluirToolStripMenuItem.Click += incluirToolStripMenuItem_Click;
             // 
             // listarToolStripMenuItem
             // 
@@ -189,21 +190,21 @@
             // incluirToolStripMenuItem1
             // 
             incluirToolStripMenuItem1.Name = "incluirToolStripMenuItem1";
-            incluirToolStripMenuItem1.Size = new Size(180, 22);
+            incluirToolStripMenuItem1.Size = new Size(107, 22);
             incluirToolStripMenuItem1.Text = "&Incluir";
             incluirToolStripMenuItem1.Click += incluirToolStripMenuItem1_Click;
             // 
             // listarToolStripMenuItem1
             // 
             listarToolStripMenuItem1.Name = "listarToolStripMenuItem1";
-            listarToolStripMenuItem1.Size = new Size(180, 22);
+            listarToolStripMenuItem1.Size = new Size(107, 22);
             listarToolStripMenuItem1.Text = "&Niveis";
             listarToolStripMenuItem1.Click += listarToolStripMenuItem1_Click;
             // 
             // listarToolStripMenuItem2
             // 
             listarToolStripMenuItem2.Name = "listarToolStripMenuItem2";
-            listarToolStripMenuItem2.Size = new Size(180, 22);
+            listarToolStripMenuItem2.Size = new Size(107, 22);
             listarToolStripMenuItem2.Text = "&Listas";
             // 
             // movimentoToolStripMenuItem
@@ -217,7 +218,7 @@
             // 
             caixaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { abrirToolStripMenuItem, terminarToolStripMenuItem, consultarToolStripMenuItem1, relatorioToolStripMenuItem });
             caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            caixaToolStripMenuItem.Size = new Size(119, 22);
+            caixaToolStripMenuItem.Size = new Size(120, 22);
             caixaToolStripMenuItem.Text = "&Caixa";
             // 
             // abrirToolStripMenuItem
@@ -247,20 +248,20 @@
             // terminalToolStripMenuItem
             // 
             terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
-            terminalToolStripMenuItem.Size = new Size(119, 22);
+            terminalToolStripMenuItem.Size = new Size(120, 22);
             terminalToolStripMenuItem.Text = "&Terminal";
             // 
             // vendasToolStripMenuItem
             // 
             vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
-            vendasToolStripMenuItem.Size = new Size(119, 22);
+            vendasToolStripMenuItem.Size = new Size(120, 22);
             vendasToolStripMenuItem.Text = "&Vendas ";
             // 
             // vendasToolStripMenuItem1
             // 
             vendasToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { consultarToolStripMenuItem2, emitirNotaToolStripMenuItem });
             vendasToolStripMenuItem1.Name = "vendasToolStripMenuItem1";
-            vendasToolStripMenuItem1.Size = new Size(119, 22);
+            vendasToolStripMenuItem1.Size = new Size(120, 22);
             vendasToolStripMenuItem1.Text = "&Vendas ";
             // 
             // consultarToolStripMenuItem2
@@ -324,19 +325,19 @@
             // usuarioToolStripMenuItem
             // 
             usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            usuarioToolStripMenuItem.Size = new Size(165, 22);
+            usuarioToolStripMenuItem.Size = new Size(166, 22);
             usuarioToolStripMenuItem.Text = "Usuario";
             // 
             // perfilToolStripMenuItem
             // 
             perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            perfilToolStripMenuItem.Size = new Size(165, 22);
+            perfilToolStripMenuItem.Size = new Size(166, 22);
             perfilToolStripMenuItem.Text = "Perfil";
             // 
             // trocarDeUsuarioToolStripMenuItem
             // 
             trocarDeUsuarioToolStripMenuItem.Name = "trocarDeUsuarioToolStripMenuItem";
-            trocarDeUsuarioToolStripMenuItem.Size = new Size(165, 22);
+            trocarDeUsuarioToolStripMenuItem.Size = new Size(166, 22);
             trocarDeUsuarioToolStripMenuItem.Text = "Trocar de Usuario";
             trocarDeUsuarioToolStripMenuItem.Click += trocarDeUsuarioToolStripMenuItem_Click;
             // 
@@ -347,6 +348,7 @@
             pnlCentral.Size = new Size(664, 367);
             pnlCentral.TabIndex = 6;
             pnlCentral.Visible = false;
+            pnlCentral.Paint += pnlCentral_Paint;
             // 
             // FrmPrincipal
             // 

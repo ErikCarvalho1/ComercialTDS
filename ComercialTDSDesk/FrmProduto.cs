@@ -10,11 +10,46 @@ using System.Windows.Forms;
 
 namespace ComercialTDSDesk
 {
-    public partial class FrmProduto: Form
+    public partial class FrmProduto : Form
     {
         public FrmProduto()
         {
             InitializeComponent();
+        }
+
+        private void btnCarregarImagem_Click(object sender, EventArgs e)
+        {
+            ofdObterImagem.Filter = "imagens (*.jpg;*.png|*.jpg*.png)";
+            if (ofdObterImagem.ShowDialog() == DialogResult.OK)
+            {
+                picImagem.Image = Image.FromFile(ofdObterImagem.FileName);
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            using (MemoryStream ms = new )
+            {
+                picImagem.Image.Save(ms, picImagem.Image.RowFormat);
+            }
+                Produto produto = new(
+             txtCodBarras.Text,
+             txtDescricao.Text,
+             (double)nudValorUnit.Value,
+             txtUnidadeVenda.Text,
+             Convert.ToInt32(cmbCategoria.SelectedValue),
+             (double)nudEstoqueMinimo.Value,
+             (double)
+    
+
+
+
+             );
+            produto.Inserir();
+            if (produto.Id > 0)
+            {
+                MessageBox.Show($"Produto {produto.Id} cadastrado com sucesso");
+            }
         }
     }
 }
