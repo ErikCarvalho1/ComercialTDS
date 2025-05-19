@@ -96,15 +96,27 @@ namespace ComercialTDSDesk
         private void listarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmNivel frmnivel = new();
-            frmnivel.MdiParent = this; 
+            frmnivel.MdiParent = this;
             frmnivel.Show();
         }
 
         private void incluirToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmUsuario usuario = new();
-            usuario.MdiParent = this; 
+            usuario.MdiParent = this;
             usuario.Show();
+        }
+
+        private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AssociaPanel(new FrmCategoria());
+           
+
+        }
+
+        private void pnlCentral_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -505,6 +505,44 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 DELIMITER $$
+USE `comercialtdsdb01`;
+DROP procedure IF EXISTS `sp_produto_update`;
+
+USE `comercialtdsdb01`;
+DROP procedure IF EXISTS `comercialtdsdb01`.`sp_produto_update`;
+;
+
+DELIMITER $$
+USE `comercialtdsdb01`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_produto_update`(
+spid int,
+spcod_barras varchar(60), 
+spdescricao varchar(60),
+spvalor_unit decimal(10,2),
+spunidade_venda varchar(12),
+spcategoria_id int,
+spestoque_minimo decimal(10,2),
+spclasse_desconto decimal(10,2),
+spimagem blob,
+spdescontinuado bit(1)
+)
+begin
+	update produtos set cod_barras = spcod_barras, descricao = spdescricao,
+    valor_unit = spvalor_unit, unidade_venda = spunidade_venda, categoria_id = spcategoria_id,
+    estoque_minimo = spestoque_minimo, classe_desconto = spclasse_desconto, descontinuado = spdescontinuado ,
+    imagem = spimagem
+    where id = spid;
+end$$
+
+DELIMITER ;
+;
+
+
+USE `comercialtdsdb01`;
+DROP procedure IF EXISTS `comercialtdsdb01`.`sp_produto_insert`;
+
+
+DELIMITER $$
 USE `comercialtdsdb01`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_produto_insert`(
 spcod_barras varchar(60), 
@@ -513,10 +551,12 @@ spvalor_unit decimal(10,2),
 spunidade_venda varchar(12),
 spcategoria_id int,
 spestoque_minimo decimal(10,2),
-spclasse_desconto decimal(10,2))
+spclasse_desconto decimal(10,2),
+spimagem blob
+)
 begin
 	insert into produtos
-    values(
+    values(sp_produto_update
     0,
     spcod_barras, 
     spdescricao, 
@@ -532,6 +572,10 @@ begin
 end$$
 
 DELIMITER ;
+
+
+
+
 
 -- -----------------------------------------------------
 -- procedure sp_produto_update
