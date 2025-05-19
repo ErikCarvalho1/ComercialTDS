@@ -28,16 +28,23 @@ namespace ComercialTDSDesk
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Produto produto = new(
-         txtCodBarras.Text,
-         txtDescricao.Text,
-         (double)nudValorUnit.Value,
-         txtUnidadeVenda.Text,
-         Convert.ToInt32(cmbCategoria.SelectedValue),
+            using (MemoryStream ms = new )
+            {
+                picImagem.Image.Save(ms, picImagem.Image.RowFormat);
+            }
+                Produto produto = new(
+             txtCodBarras.Text,
+             txtDescricao.Text,
+             (double)nudValorUnit.Value,
+             txtUnidadeVenda.Text,
+             Convert.ToInt32(cmbCategoria.SelectedValue),
+             (double)nudEstoqueMinimo.Value,
+             (double)
+    
 
 
 
-         );
+             );
             produto.Inserir();
             if (produto.Id > 0)
             {
