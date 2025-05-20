@@ -123,6 +123,7 @@
             // picImagem
             // 
             picImagem.BorderStyle = BorderStyle.FixedSingle;
+            picImagem.Image = Properties.Resources.sem_imagem;
             picImagem.Location = new Point(455, 12);
             picImagem.Name = "picImagem";
             picImagem.Size = new Size(150, 150);

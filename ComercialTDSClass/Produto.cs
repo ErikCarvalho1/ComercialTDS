@@ -4,16 +4,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ComercialTDSClass;
 
 namespace ComercialTDSClass
 {
-    class Produto
+   public class Produto
     {
         
 
         public int Id { get; set; }
         public string?  CodBarras { get; set; }
-
+        public string? Descricao { get; set; }
         public string? Sigla { get; set; }
         public double? ValorUnit { get; set; }
         public string? UnidadeVenda { get; set; }
@@ -21,14 +22,14 @@ namespace ComercialTDSClass
         public double? EstoqueMinimo  { get; set; }
         public double? ClasseDesconto { get; set; }
         
-        public Stream Imagem { get; set; }
+        public byte[] Imagem { get; set; }
         public DateTime? DataCad  { get; set; }
         public bool? DesContinuado{ get; set; }
         public Produto()
         {
             Categoria = new();
         }
-        public Produto(int id, string? codbarras, string? sigla, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, Stream  imagem, DateTime? dataCad, bool? desContinuado)
+        public Produto(int id, string? codbarras, string? sigla, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[]  imagem, DateTime? dataCad, bool? desContinuado)
         {
             Id = id;
             CodBarras = codbarras;
@@ -42,7 +43,7 @@ namespace ComercialTDSClass
             DataCad = dataCad;
             DesContinuado = desContinuado;
         }
-        public Produto( string? codbarras, string? sigla, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, Stream imagem)
+        public Produto( string? codbarras, string? sigla, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem)
         {
             
             CodBarras = codbarras;
@@ -102,40 +103,39 @@ namespace ComercialTDSClass
 
         public Produto ObterporId(int id)
         {
-           
             Produto produto = new();
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from produtos where id = {id}";
             var dr = cmd.ExecuteReader();
-            if(dr.Read())
+            if (dr.Read())
             {
                 produto = new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    dr.GetDouble(3),
-                    dr.GetString(4),
-                    Categoria.ObterPorId(dr.GetInt32(5)),
-                    dr.GetDouble(6),
-                    dr.GetDouble(7),
-                    dr.GetStream(8),
-                    dr.GetDateTime(9),
-                    dr.GetBoolean(10)
-
+                        dr.GetInt32(0),
+                        dr.GetString(1),
+                        dr.GetString(2),
+                        dr.GetDouble(3),
+                        dr.GetString(4),
+                        Categoria.ObterPorId(dr.GetInt32(5)),
+                        dr.GetDouble(6),
+                        dr.GetDouble(7),
+                        (byte[])dr.GetValue(8),// cast objeto para  matriz byte[]
+                        dr.GetDateTime(9),
+                        dr.GetBoolean(10)
                     );
-                
             }
             dr.Close();
             cmd.Connection.Close();
             return produto;
+
         }
+          
         public static  List<Produto> ObterLista(int id)
         {
             List<Produto> produtos = new();
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from produtos where id = {id}";
             var dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                 produtos.Add( new(
                     dr.GetInt32(0),
@@ -146,7 +146,7 @@ namespace ComercialTDSClass
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    dr.GetStream(8),
+                    (byte[])dr.GetValue(8),
                     dr.GetDateTime(9),
                     dr.GetBoolean(10)
 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComercialTDSClass;
+using ComercialTDSDesk;
 
 namespace ComercialTDSDesk
 {
@@ -27,24 +29,22 @@ namespace ComercialTDSDesk
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            using (MemoryStream ms = new )
-            {
-                picImagem.Image.Save(ms, picImagem.Image.RowFormat);
-            }
-                Produto produto = new(
-             txtCodBarras.Text,
-             txtDescricao.Text,
-             (double)nudValorUnit.Value,
-             txtUnidadeVenda.Text,
-             Convert.ToInt32(cmbCategoria.SelectedValue),
-             (double)nudEstoqueMinimo.Value,
-             (double)
-    
+        { 
+            byte[] imgBytes;
+            MemoryStream ms = new();
+            picImagem.Image.Save(ms, picImagem.Image.RawFormat);
+            imgBytes = ms.ToArray();
 
-
-
-             );
+            Produto produto = new(  
+            txtCodBarras.Text,
+            txtDescricao.Text,
+            (double)nudValorUnit.Value,
+            txtUnidadeVenda.Text,
+            Categoria.ObterPorId( Convert.ToInt32(cmbCategoria.SelectedValue)),
+            (double)nudEstoqueMinimo.Value,
+            (double)nudClasseDesconto.Value,
+         imgBytes
+         );
             produto.Inserir();
             if (produto.Id > 0)
             {
