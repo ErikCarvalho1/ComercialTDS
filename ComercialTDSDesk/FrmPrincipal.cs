@@ -109,14 +109,19 @@ namespace ComercialTDSDesk
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AssociaPanel(new FrmCategoria());
-           
+            AssociaPanel(new FrmProduto());
+
 
         }
 
         private void pnlCentral_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void listarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AssociaPanel(new FrmProdutoListar());
         }
     }
 }
