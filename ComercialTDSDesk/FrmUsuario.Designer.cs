@@ -107,6 +107,7 @@
             cmbNivel.Name = "cmbNivel";
             cmbNivel.Size = new Size(96, 23);
             cmbNivel.TabIndex = 7;
+            cmbNivel.SelectedIndexChanged += cmbNivel_SelectedIndexChanged;
             // 
             // label1
             // 

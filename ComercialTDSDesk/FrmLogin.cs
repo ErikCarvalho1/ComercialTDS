@@ -40,9 +40,10 @@ namespace ComercialTDSDesk
             else
             {
                 MessageBox.Show("Email e/ou senha inconrretos \n ou usuários não encontrados");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
             }
-            txtEmail.Focus();
-            txtEmail.SelectAll();
+      
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)

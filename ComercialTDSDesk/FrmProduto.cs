@@ -21,7 +21,7 @@ namespace ComercialTDSDesk
 
         private void btnCarregarImagem_Click(object sender, EventArgs e)
         {
-            ofdObterImagem.Filter = "imagens (*.jpg;*.png|*.jpg*.png)";
+            ofdObterImagem.Filter = "Imagens (*.jpg;*.png)|*.jpg;*.png";
             if (ofdObterImagem.ShowDialog() == DialogResult.OK)
             {
                 picImagem.Image = Image.FromFile(ofdObterImagem.FileName);
@@ -29,27 +29,35 @@ namespace ComercialTDSDesk
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
-        { 
+        {
             byte[] imgBytes;
             MemoryStream ms = new();
             picImagem.Image.Save(ms, picImagem.Image.RawFormat);
             imgBytes = ms.ToArray();
 
-            Produto produto = new(  
-            txtCodBarras.Text,
-            txtDescricao.Text,
-            (double)nudValorUnit.Value,
-            txtUnidadeVenda.Text,
-            Categoria.ObterPorId( Convert.ToInt32(cmbCategoria.SelectedValue)),
-            (double)nudEstoqueMinimo.Value,
-            (double)nudClasseDesconto.Value,
-         imgBytes
-         );
+            Produto produto = new(
+                txtCodBarras.Text,
+                txtDescricao.Text,
+                (double)nudValorUnit.Value,
+                txtUnidadeVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
+                (double)nudEstoqueMinimo.Value,
+                (double)nudClasseDesconto.Value,
+                imgBytes
+                );
             produto.Inserir();
             if (produto.Id > 0)
-            {
-                MessageBox.Show($"Produto {produto.Id} cadastrado com sucesso");
-            }
+                MessageBox.Show($"Produto {produto.Id} gravado com sucesso!");
+        }
+
+       
+
+        private void FrmProduto_Load(object sender, EventArgs e)
+        {
+
+            cmbCategoria.DataSource = Categoria.ObterLista();
+            cmbCategoria.DisplayMember = "Nome";
+            cmbCategoria.ValueMember = "Id";
         }
     }
 }
