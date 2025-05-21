@@ -35,33 +35,33 @@ namespace ComercialTDSDesk
         private void bntGravar_Click(object sender, EventArgs e)
         {
 
-                    if (txtId.Text == string.Empty)
-                    {
-                        // INSERIR
-                        if (txtNome.Text != string.Empty && txtEmail.Text != string.Empty && txtSenha.Text != string.Empty && cmbNivel.SelectedItem != null)
-                        {
-                            Nivel nivelSelecionado = (Nivel)cmbNivel.SelectedItem;
-
-                            Usuario usuario = new(txtNome.Text, txtEmail.Text, txtSenha.Text, nivelSelecionado, true);
-                            usuario.Inserir();
-
-                            if (usuario.Id > 0)
-                            {
-                                MessageBox.Show("Usuário cadastrado com sucesso!");
-                                //btnGravar.Enabled = false;
-                            }
-                        }
-
-                        CarregaGrid();     // Método que você deve ter para atualizar a grade
-                       LimpaControles();  // Método para limpar os campos
-                    }
-                    else
-                    {
-                        // ATUALIZAR
-                        if (cmbNivel.SelectedItem != null)
-                        {
+            if (txtId.Text == string.Empty)
+            {
+                // INSERIR
+                if (txtNome.Text != string.Empty && txtEmail.Text != string.Empty && txtSenha.Text != string.Empty && cmbNivel.SelectedItem != null)
+                {
                     Nivel nivelSelecionado = (Nivel)cmbNivel.SelectedItem;
-                     
+
+                    Usuario usuario = new(txtNome.Text, txtEmail.Text, txtSenha.Text, nivelSelecionado, true);
+                    usuario.Inserir();
+
+                    if (usuario.Id > 0)
+                    {
+                        MessageBox.Show("Usuário cadastrado com sucesso!");
+                        //btnGravar.Enabled = false;
+                    }
+                }
+
+                CarregaGrid();     // Método que você deve ter para atualizar a grade
+                LimpaControles();  // Método para limpar os campos
+            }
+            else
+            {
+                // ATUALIZAR
+                if (cmbNivel.SelectedItem != null)
+                {
+                    Nivel nivelSelecionado = (Nivel)cmbNivel.SelectedItem;
+
                     Usuario usuario = new(
                                 int.Parse(txtId.Text),
                                 txtNome.Text,
@@ -71,13 +71,13 @@ namespace ComercialTDSDesk
                                 true
                             );
 
-                            if (usuario.Atualizar())
-                            {
-                                MessageBox.Show("Usuário atualizado com sucesso!");
-                                //btnGravar.Enabled = false;
-                            }
-                        }
+                    if (usuario.Atualizar())
+                    {
+                        MessageBox.Show("Usuário atualizado com sucesso!");
+                        //btnGravar.Enabled = false;
                     }
+                }
+            }
         }
 
         private void CarregaGrid()
@@ -152,6 +152,11 @@ namespace ComercialTDSDesk
             txtEmail.ReadOnly = true;
             cmbNivel.Enabled = false;
             bntEditar.Enabled = true;
+        }
+
+        private void cmbNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
