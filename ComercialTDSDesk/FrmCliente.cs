@@ -43,7 +43,7 @@ namespace ComercialTDSDesk
             }
             else
             {
-                Cliente cliente = new( txtNome.Text, txtCpf.Text, txtTelefone.Text, txtEmail.Text, DateTime.Parse(dateCliente.Text));
+                Cliente cliente = new( txtNome.Text, txtCpf.Text, txtTelefone.Text, dateCliente.Text);
                 if (cliente.Atualizar())
                 {
                     MessageBox.Show("Nível atualizado com sucesso!");
@@ -52,5 +52,5 @@ namespace ComercialTDSDesk
             }
         }
     }
-    }
+    
 }

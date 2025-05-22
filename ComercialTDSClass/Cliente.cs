@@ -51,6 +51,15 @@ namespace ComercialTDSClass
             DataCadastro = dataCadastro;
             Ativo = ativo;
         }
+
+        
+        public Cliente(string nome, string cpf, string telefone, DateTime dataNascimento)
+        {// este é o construtor que utilizaremos para inserir o cliente
+            Nome = nome;
+            Cpf = cpf;
+            Telefone = telefone;
+            DataNascimento = dataNascimento;
+        }
         public void Inserir()
         {
             var cmd = Banco.Abrir();

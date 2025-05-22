@@ -85,7 +85,7 @@ namespace ComercialTDSDesk
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AssociaPanel(new FrmCliente());
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
