@@ -26,17 +26,15 @@ namespace ComercialTDSDesk
             if (txtId.Text == string.Empty)
             {
                 if (txtNome.Text != string.Empty && txtCpf.Text != string.Empty && txtTelefone.Text != string.Empty && txtEmail.Text != string.Empty
-                    && txtTelefone.Text != string.Empty &&  txtCep.Text != string.Empty && txtLogadouro.Text != string.Empty &&
-                    txtNumero.Text != string.Empty && txtComplemento.Text != string.Empty && txtBairro.Text != string.Empty && txtCidade.Text != string.Empty && txtUf.Text
-                    != string.Empty && txtTipoEnderoco.Text != string.Empty)
+                    && txtTelefone.Text != string.Empty);// &&  txtCep.Text != string.Empty && txtLogadouro.Text != string.Empty &&
+                 //  txtNumero.Text != string.Empty && txtComplemento.Text != string.Empty && txtBairro.Text != string.Empty && txtCidade.Text != string.Empty && txtUf.Text
+                  //  != string.Empty && txtTipoEnderoco.Text != string.Empty)
                 {
                     Cliente cliente = new(txtNome.Text, txtCpf.Text, txtTelefone.Text, txtEmail.Text, DateTime.Parse(dateCliente.Text));
-                    Endereco endereco = new( txtCep.Text, txtLogadouro.Text, txtNumero.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text,
-                       txtUf.Text, txtTipoEnderoco.Text );
-                    endereco.Inserir();
-
+                  //  Endereco endereco = new( txtCep.Text, txtLogadouro.Text, txtNumero.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, txtUf.Text, txtTipoEnderoco.Text );
+                    //endereco.Inserir();
                     cliente.Inserir();
-                    if (cliente.Id > 0  && endereco.ClienteId > 0)
+                    if (cliente.Id > 0 )// && endereco.ClienteId > 0)
                     {
                         MessageBox.Show($"Cliente cadastrado com sucesso");
                         //btnGravar.Enabled = false;
