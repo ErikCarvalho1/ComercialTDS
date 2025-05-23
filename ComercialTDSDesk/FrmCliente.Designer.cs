@@ -58,6 +58,7 @@
             bntEditar = new Button();
             bntCancelar = new Button();
             dateCliente = new DateTimePicker();
+            txtCidade = new TextBox();
             SuspendLayout();
             // 
             // txtId
@@ -304,11 +305,19 @@
             dateCliente.Size = new Size(200, 23);
             dateCliente.TabIndex = 31;
             // 
+            // txtCidade
+            // 
+            txtCidade.Location = new Point(554, 324);
+            txtCidade.Name = "txtCidade";
+            txtCidade.Size = new Size(100, 23);
+            txtCidade.TabIndex = 32;
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1127, 572);
+            Controls.Add(txtCidade);
             Controls.Add(dateCliente);
             Controls.Add(bntCancelar);
             Controls.Add(bntEditar);
@@ -341,6 +350,7 @@
             Controls.Add(txtId);
             Name = "FrmCliente";
             Text = "FrmCliente";
+            Load += FrmCliente_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -377,5 +387,6 @@
         private Button bntEditar;
         private Button bntCancelar;
         private DateTimePicker dateCliente;
+        private TextBox txtCidade;
     }
 }

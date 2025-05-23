@@ -83,7 +83,6 @@ namespace ComercialTDSClass
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_itempedido_insert";
             cmd.Parameters.AddWithValue("spid", Id);
-
             cmd.Parameters.AddWithValue("spquantidade", Quantidade);
             cmd.Parameters.AddWithValue("spdesconto", Desconto);
             bool atualizado = cmd.ExecuteNonQuery() > 0? true: false;
@@ -115,27 +114,26 @@ namespace ComercialTDSClass
         }
         public static List<ItemDePedido> ObterlistaPorPedidoId(int pedidoId)
         {
-            ItemDePedido itemPedido = new();
-
+            List<ItemDePedido> items = new();
             var cmd = Banco.Abrir();
             cmd.CommandText = $"select * from itempedido where pedido_id = {pedidoId}";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                itemPedido.Add( 
+                items.Add(
                     new(
-                    dr.GetInt32(0),
-                    dr.GetInt32(1),
-                    Produto.ObterPorId(dr.GetInt32(2)),
-                    dr.GetDouble(3),
-                     dr.GetDouble(4),
-                      dr.GetDouble(5)
-                    ));
-
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        Produto.ObterPorId(dr.GetInt32(2)),
+                        dr.GetDouble(3),
+                        dr.GetDouble(4),
+                        dr.GetDouble(5)
+                    )
+                );
             }
             dr.Close();
             cmd.Connection.Close();
-            return itemPedido;    
+            return items;
         }
     }
 }

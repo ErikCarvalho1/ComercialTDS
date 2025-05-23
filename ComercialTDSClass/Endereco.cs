@@ -48,6 +48,19 @@ namespace ComercialTDSClass
             Uf = uf;
             TipoEndereco = tipoEndereco;
         }
+        public Endereco( string? cep, string? logradouro, string? numero, string? complemento, string? bairro, string? cidade, string? uf, string? tipoEndereco)
+        { // este construtor deve ser utilizado para inserir endereço
+            
+            Cep = cep;
+            Logradouro = logradouro;
+            Numero = numero;
+            Complemento = complemento;
+            Bairro = bairro;
+            Cidade = cidade;
+            Uf = uf;
+            TipoEndereco = tipoEndereco;
+        }
+
 
         public void Inserir()
         {
