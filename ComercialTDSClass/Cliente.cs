@@ -53,11 +53,12 @@ namespace ComercialTDSClass
         }
 
         
-        public Cliente(string nome, string cpf, string telefone, DateTime dataNascimento)
+        public Cliente(string nome, string cpf, string telefone, string email ,DateTime dataNascimento)
         {// este é o construtor que utilizaremos para inserir o cliente
             Nome = nome;
             Cpf = cpf;
             Telefone = telefone;
+            Email = email;
             DataNascimento = dataNascimento;
         }
         public void Inserir()
