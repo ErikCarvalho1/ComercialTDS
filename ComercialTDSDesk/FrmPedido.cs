@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComercialTDSClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,54 @@ namespace ComercialTDSDesk
         private void btnCarregarImagem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmPedido_Load_2(object sender, EventArgs e)
+        {
+            txtUsuario.Text = $"{Program.UsuarioLogado.Id} - {Program.UsuarioLogado.Nome}";
+        }
+
+        private void txtIdCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (txtIdCliente.Text.Length > 4)
+            {
+                var cliente = Cliente.ObterPorId(int.Parse(txtIdCliente.Text));
+                if (cliente.Id > 0)
+                {
+                    txtNomeCliente.Text = cliente.Nome;
+                }
+            }
+        }
+
+        private void txtNomeCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInserePedido_Click(object sender, EventArgs e)
+        {
+            Pedido pedido = new(Program.UsuarioLogado, Cliente.ObterPorId(int.Parse(txtIdCliente.Text)));
+            pedido.Inserir();
+            if (pedido.Id > 0)
+            {
+                txtIdPedido.Text = pedido.Id.ToString();
+                grbIndentificacao.Enabled = false;
+                grbItens.Enabled = true;
+            }
+        }
+
+        private void txtCodBar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCodBar.Text.Length > 6)
+            {
+                var produto = Produto.ObterPorCodBar(txtCodBar.Text);
+                if (produto.Id == 0)
+                {
+                    produto = Produto.ObterPorId(int.Parse(txtCodBar.Text));
+                }
+                txtDescricao.Text = produto.Descricao;
+                txtValorUnit.Text = produto.ValorUnit.ToString("R$##.00");
+            }
         }
     }
 }
