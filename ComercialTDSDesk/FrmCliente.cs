@@ -25,19 +25,29 @@ namespace ComercialTDSDesk
         {
             if (txtId.Text == string.Empty)
             {
-                if (txtNome.Text != string.Empty && txtCpf.Text != string.Empty && txtTelefone.Text != string.Empty && txtEmail.Text != string.Empty
-                    && txtTelefone.Text != string.Empty);// &&  txtCep.Text != string.Empty && txtLogadouro.Text != string.Empty &&
-                 //  txtNumero.Text != string.Empty && txtComplemento.Text != string.Empty && txtBairro.Text != string.Empty && txtCidade.Text != string.Empty && txtUf.Text
-                  //  != string.Empty && txtTipoEnderoco.Text != string.Empty)
+                if (txtNome.Text != string.Empty && txtCpf.Text != string.Empty && txtTelefone.Text != string.Empty &&
+                    txtEmail.Text != string.Empty
+                    && txtTelefone.Text != string.Empty) ;// &&  txtCep.Text != string.Empty && txtLogadouro.Text != string.Empty &&
+                                                          //  txtNumero.Text != string.Empty && txtComplemento.Text != string.Empty && txtBairro.Text != string.Empty && txtCidade.Text != string.Empty && txtUf.Text
+                                                          //  != string.Empty && txtTipoEnderoco.Text != string.Empty)
                 {
                     Cliente cliente = new(txtNome.Text, txtCpf.Text, txtTelefone.Text, txtEmail.Text, DateTime.Parse(dateCliente.Text));
-                  //  Endereco endereco = new( txtCep.Text, txtLogadouro.Text, txtNumero.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, txtUf.Text, txtTipoEnderoco.Text );
-                    //endereco.Inserir();
+
                     cliente.Inserir();
-                    if (cliente.Id > 0 )// && endereco.ClienteId > 0)
+                    if (cliente.Id > 0)
                     {
-                        MessageBox.Show($"Cliente cadastrado com sucesso");
-                        //btnGravar.Enabled = false;
+                        if (txtCep.Text != string.Empty && txtLogadouro.Text != string.Empty &&
+                    txtNumero.Text != string.Empty && txtComplemento.Text != string.Empty && txtBairro.Text != string.Empty && txtCidade.Text != string.Empty && txtUf.Text
+                    != string.Empty && txtTipoEnderoco.Text != string.Empty)
+                        {
+                            Endereco endereco = new(cliente.Id, txtCep.Text, txtLogadouro.Text, txtNumero.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, txtUf.Text, txtTipoEnderoco.Text);
+                            endereco.Inserir();
+                            if (endereco.ClienteId > 0)
+                            {
+                                MessageBox.Show($"Cliente cadastrado com sucesso");
+                                //btnGravar.Enabled = false;
+                            }
+                        }
                     }
                 }
             }
@@ -46,26 +56,34 @@ namespace ComercialTDSDesk
                 Cliente cliente = new(txtNome.Text, txtCpf.Text, txtTelefone.Text, txtEmail.Text, DateTime.Parse(dateCliente.Text));
                 if (cliente.Atualizar())
                 {
+                    Endereco endereco = new(cliente.Id, txtCep.Text, txtLogadouro.Text, txtNumero.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, txtUf.Text, txtTipoEnderoco.Text);
+                    endereco.Atualizar();
+
+
                     MessageBox.Show("Cliente atualizado com sucesso!");
                     //btnGravar.Enabled = false;
                 }
             }
 
-            //ClienteId = clienteId;
-            //Cep = cep;
-            //Logradouro = logradouro;
-            //Numero = numero;
-            //Complemento = complemento;
-            //Bairro = bairro;
-            //Cidade = cidade;
-            //Uf = uf;
-            //TipoEndereco = tipoEndereco;
+
+
 
         }
-
         private void FrmCliente_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bntEditar_Click(object sender, EventArgs e)
+        {
+            //txtNome.ReadOnly = false;
+            //txtCpf.ReadOnly = false;
+            //txtTelefone.ReadOnly = false;
+            //txtEmail.ReadOnly = false;
+            //txtCep.
+            //txtLogadouro.
+            //txtNumero.
+            //txtComplemento.Tex txtBairro.Text, txtCidade.Text, txtUf.Text, txtTipoEnderoco.Text
         }
     }
 

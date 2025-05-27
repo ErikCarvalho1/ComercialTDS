@@ -22,7 +22,7 @@ namespace ComercialTDSDesk
         {
             if (txtId.Text == string.Empty)
             {
-                if (txtNome.Text != string.Empty && txtSigla.Text != string.Empty )
+                if (txtNome.Text != string.Empty && txtSigla.Text != string.Empty)
                 {
                     Nivel nivel = new(txtNome.Text, txtSigla.Text);
                     nivel.Inserir();
@@ -45,7 +45,7 @@ namespace ComercialTDSDesk
 
                 }
             }
-           
+
         }
         private void CarregaGrid()
         {
@@ -67,7 +67,7 @@ namespace ComercialTDSDesk
             txtId.Clear();
             txtNome.Clear();
             txtSigla.Clear();
-           
+
         }
         private void FrmNivel_Load(object sender, EventArgs e)
         {
@@ -108,7 +108,7 @@ namespace ComercialTDSDesk
             txtSigla.ReadOnly = true;
             bntEditar.Enabled = true;
 
-           // MessageBox.Show($"{nivel.Id} {nivel.Nome} {nivel.Sigla}");
+            // MessageBox.Show($"{nivel.Id} {nivel.Nome} {nivel.Sigla}");
 
         }
 
@@ -119,6 +119,11 @@ namespace ComercialTDSDesk
             bntEditar.Enabled = false;
             bntEditar.Enabled = true;
 
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }
