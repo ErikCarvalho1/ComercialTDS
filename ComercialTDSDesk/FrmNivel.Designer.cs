@@ -40,12 +40,13 @@
             clnSIgla = new DataGridViewTextBoxColumn();
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvNiveis).BeginInit();
             SuspendLayout();
             // 
             // txtId
             // 
-            txtId.Location = new Point(51, 54);
+            txtId.Location = new Point(57, 273);
             txtId.Name = "txtId";
             txtId.Size = new Size(58, 23);
             txtId.TabIndex = 0;
@@ -69,7 +70,7 @@
             // 
             bntGravar.Location = new Point(57, 202);
             bntGravar.Name = "bntGravar";
-            bntGravar.Size = new Size(75, 23);
+            bntGravar.Size = new Size(73, 23);
             bntGravar.TabIndex = 3;
             bntGravar.Text = "&Gravar";
             bntGravar.UseVisualStyleBackColor = true;
@@ -101,12 +102,12 @@
             dgvNiveis.AllowUserToDeleteRows = false;
             dgvNiveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNiveis.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnSIgla });
-            dgvNiveis.Location = new Point(324, 68);
+            dgvNiveis.Location = new Point(313, 105);
             dgvNiveis.Name = "dgvNiveis";
             dgvNiveis.ReadOnly = true;
             dgvNiveis.RowHeadersVisible = false;
             dgvNiveis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNiveis.Size = new Size(283, 180);
+            dgvNiveis.Size = new Size(283, 140);
             dgvNiveis.TabIndex = 6;
             dgvNiveis.CellContentClick += dgvNiveis_CellContentClick_1;
             dgvNiveis.CellContentDoubleClick += dgvNiveis_CellContentClick_1;
@@ -149,11 +150,24 @@
             label2.TabIndex = 8;
             label2.Text = "Sigla";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.MenuHighlight;
+            label3.Location = new Point(241, 35);
+            label3.Name = "label3";
+            label3.Size = new Size(177, 25);
+            label3.TabIndex = 9;
+            label3.Text = "Cadastro de Nivel";
+            label3.Click += label3_Click;
+            // 
             // FrmNivel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(648, 328);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvNiveis);
@@ -185,5 +199,6 @@
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnSIgla;
+        private Label label3;
     }
 }

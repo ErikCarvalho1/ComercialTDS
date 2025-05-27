@@ -20,7 +20,12 @@ namespace ComercialTDSDesk
 
         private void dgvProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            var produto = Produto.ObterPorId(Convert.ToInt32(dgvProduto.Rows[dgvProduto.CurrentRow.Index].Cells[0].Value));
+            using (MemoryStream ms = new MemoryStream(produto.Imagem))
+            {
+                picImagem.Image = Image.FromStream(ms);
+                picImagem.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         private void FrmProdutoListar_Load(object sender, EventArgs e)
