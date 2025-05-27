@@ -101,7 +101,7 @@ namespace ComercialTDSDesk
             itempedido.inserir();
             if (itempedido.Id > 0)
             {
-                CarregarItens();
+                CarregarItens(int.Parse(txtIdPedido.Text));
             }
 
         }
@@ -125,10 +125,8 @@ namespace ComercialTDSDesk
                 desconto = +item.Desconto;
                 double totalItem = item.ValorUnit * item.Quantidade - item.Desconto;
                 dgvItensPedido.Rows[linha].Cells[6].Value = totalItem;
-                linha++;
-                txtSubTotalItens.Text - subTotal.ToString();
                 txtSubTotal.Text = subTotal.ToString();
-
+                 linha++;
             }
         }
 
@@ -140,7 +138,7 @@ namespace ComercialTDSDesk
                 var pedido = Pedido.ObterPorId(int.Parse(txtIdPedido.Text));
                 if (pedido.Id > 0)
                 {
-                    if (pedido.Status"A")
+                    if (pedido.Status == "A")
                     {
                         grbIndentificacao.Enabled = false;
                         txtNomeCliente.Text = $"{pedido.Cliente.Id} - {pedido.Cliente.Nome}";
@@ -148,13 +146,30 @@ namespace ComercialTDSDesk
                         grbItens.Enabled = true;
 
                     }
+                    else if (pedido.Status == "F")
+                    {
+                        var resposta = MessageBox.Show(
+                            "O pedido está fechado.\nDeseja Reabrir? ", // texto da mensagem 
+                            "Pedido", MessageBoxButtons.YesNo, // botões da mensagem 
+                            MessageBoxIcon.Question, //ícone da mensagem
+                            MessageBoxDefaultButton.Button2 // define qual botão aparecerá ativo na caixa
+                            );
+                        if (resposta == DialogResult.Yes)
+                        {
+                            pedido.Status = "A";
+                            pedido.Atualizar();
+                        }
+                    }
                 }
             }
         }
 
         private void txtDescontoPedido_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtTotal.Text = (double.Parse(txtSubTotalItens.Text) - double.Parse(txtDescontoPedido.Text)).ToString("##.00");
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -164,12 +179,17 @@ namespace ComercialTDSDesk
             pedido.Status = "F";
              if (pedido.Atualizar())
             {
-                MessageBox.Show($"Pedido {pedido.Id} foi fechado com sucesso. \n");
-                Controls.Clear();
-            }
-            
+                MessageBox.Show($"Pedido {pedido.Id} foi Fechado com sucesso.\n");
 
-            
+                dgvItensPedido.Rows.Clear();
+                txtIdPedido.Clear();
+                txtIdPedido.Focus();
+                //.... limpar todos
+
+            }
+
+
+
         }
     }
 }
