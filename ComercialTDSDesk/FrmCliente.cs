@@ -85,6 +85,11 @@ namespace ComercialTDSDesk
             //txtNumero.
             //txtComplemento.Tex txtBairro.Text, txtCidade.Text, txtUf.Text, txtTipoEnderoco.Text
         }
+
+        private void txtCep_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
