@@ -65,13 +65,14 @@
             pictureBox2 = new PictureBox();
             label6 = new Label();
             label15 = new Label();
+            label16 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // txtId
             // 
-            txtId.Location = new Point(130, 354);
+            txtId.Location = new Point(324, 118);
             txtId.Name = "txtId";
             txtId.Size = new Size(58, 23);
             txtId.TabIndex = 0;
@@ -139,10 +140,11 @@
             txtCep.Name = "txtCep";
             txtCep.Size = new Size(109, 23);
             txtCep.TabIndex = 7;
+            txtCep.TextChanged += txtCep_TextChanged;
             // 
             // txtClienteId
             // 
-            txtClienteId.Location = new Point(582, 335);
+            txtClienteId.Location = new Point(656, 109);
             txtClienteId.Name = "txtClienteId";
             txtClienteId.Size = new Size(43, 23);
             txtClienteId.TabIndex = 6;
@@ -151,7 +153,7 @@
             // id
             // 
             id.AutoSize = true;
-            id.Location = new Point(98, 357);
+            id.Location = new Point(306, 118);
             id.Name = "id";
             id.Size = new Size(17, 15);
             id.TabIndex = 12;
@@ -197,7 +199,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(519, 338);
+            label7.Location = new Point(593, 112);
             label7.Name = "label7";
             label7.Size = new Size(57, 15);
             label7.TabIndex = 18;
@@ -283,7 +285,7 @@
             // 
             // bntGravar
             // 
-            bntGravar.Location = new Point(151, 282);
+            bntGravar.Location = new Point(151, 289);
             bntGravar.Name = "bntGravar";
             bntGravar.Size = new Size(75, 36);
             bntGravar.TabIndex = 28;
@@ -293,7 +295,7 @@
             // 
             // bntEditar
             // 
-            bntEditar.Location = new Point(227, 282);
+            bntEditar.Location = new Point(227, 289);
             bntEditar.Name = "bntEditar";
             bntEditar.Size = new Size(75, 36);
             bntEditar.TabIndex = 29;
@@ -303,7 +305,7 @@
             // 
             // bntCancelar
             // 
-            bntCancelar.Location = new Point(308, 282);
+            bntCancelar.Location = new Point(308, 289);
             bntCancelar.Name = "bntCancelar";
             bntCancelar.Size = new Size(74, 36);
             bntCancelar.TabIndex = 30;
@@ -312,9 +314,9 @@
             // 
             // dateCliente
             // 
-            dateCliente.Location = new Point(130, 245);
+            dateCliente.Location = new Point(130, 260);
             dateCliente.Name = "dateCliente";
-            dateCliente.Size = new Size(272, 23);
+            dateCliente.Size = new Size(283, 23);
             dateCliente.TabIndex = 31;
             // 
             // txtCidade
@@ -384,11 +386,21 @@
             label15.TabIndex = 38;
             label15.Text = "Registro de Clientes";
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(130, 242);
+            label16.Name = "label16";
+            label16.Size = new Size(114, 15);
+            label16.TabIndex = 39;
+            label16.Text = "Data de Nascimento";
+            // 
             // FrmCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(820, 414);
+            Controls.Add(label16);
             Controls.Add(label15);
             Controls.Add(label6);
             Controls.Add(pictureBox2);
@@ -474,5 +486,6 @@
         private PictureBox pictureBox2;
         private Label label6;
         private Label label15;
+        private Label label16;
     }
 }
